@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
 import "dotenv";
 
-async function main(){
-    await mongoose.connect("mongodb://127.0.0.1:27017/saveAddress");
-    console.log("Connected with success!");
+const mongoURL =
+  process.env.MONGO_URL || "mongodb://127.0.0.1:27017/saveAddress";
+
+async function main() {
+  await mongoose.connect(mongoURL);
+  console.log("Connected with success!");
 }
 
 main().catch((error) => console.log(`Error: ${error}`));
